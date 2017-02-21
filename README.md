@@ -1,11 +1,12 @@
 # MamreEnigma
 A simple service to track when our parish library is opened.
 
+
 ##What is
 This repository contains my personal project to give a service to whoever wants to know if our parish library is open or not.
 
 ##Architecture
-Server side: a simple server in nodejs that has two API REST call enabled:
+Server side: nodejs server that has two API REST call enabled:
   - GET /getState : Current state of the library
     - Return a not decided yet (maybe JSON) Object with the current state of the library and last time updated
       - Info are represented by these fields: state, time and date.
@@ -17,7 +18,8 @@ Server side: a simple server in nodejs that has two API REST call enabled:
       - Info is represented by this field: return_state.
     - Fields required (in a TTD Object): secret_id , that represents the unique code of access (only present in the button) to guarantee authenticity and validity of the message, state , that represents the actual state of the library.
     Please note that state could be only "YES" or "NO".
-    
+
+Button side: nodeMCU microcontroller maybe coded in LUA with one button and a led that are the "real" representation of the field state. At the switch of the button the controller will do the PUT call described above.
 
 ##Useful links
 
