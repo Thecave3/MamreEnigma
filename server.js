@@ -7,11 +7,11 @@ var secret_id = "segreto";
 
 
 app.get('/', function (req, res) {
-  res.send('Hello World, please use getState to see the current state of the library');
+  res.send('Hello World, please use a GET /getState to see the current state of the library');
 });
 
 app.get('/getState', function (req, res) {
-  res.send(JSON.parse('status :'+status));
+  res.send(JSON.parse(status));
 });
 
 
@@ -21,9 +21,9 @@ app.post('/updateState', function (req, res) {
   var update = req.param('status');
   if (token==secret_id) {
     status = update;
-    res.send(JSON.parse('OK'));
+    res.send("OK");
   }else {
-    res.send(JSON.parse('NO'));
+    res.send("NO");
   }
   });
 
@@ -31,6 +31,5 @@ app.post('/updateState', function (req, res) {
 var server = app.listen(port, function () {
   var host = server.address().address;
   var port = server.address().port;
-
   console.log('Server listening at http://%s:%s', host, port);
 });
