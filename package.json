@@ -1,0 +1,11 @@
+{
+  "name": "MamreEnigma",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "multer": "^1.2.0",
+    "request": ">= 2.0"
+  }
+}
