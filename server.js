@@ -5,6 +5,11 @@ var port = process.env.PORT || 8080;
 var status = false;
 var secret_id = "segreto";
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/', function (req, res) {
   res.send('Hello World, please use a GET /getState to see the current state of the library');
