@@ -7,8 +7,8 @@ int  val = 0;
 WiFiClient client;
 
 
-const char* WIFI_SSID = "WiFiMamreGiovani";
-const char* WIFI_PSK = "s19s20mamregiovani";
+const char* WIFI_SSID = "";
+const char* WIFI_PSK = "";
 
 
 //Server info
@@ -31,27 +31,27 @@ void setup() {
 void loop() {
 
   val = digitalRead(BUTTON);
-  if (val == HIGH) {  
+  if (val == HIGH) {
     digitalWrite(LED, HIGH);  //accende il led
-    
+
     if(!state){
       state = true;
        if ( !getPage() ) {
         Serial.println("POST request failed");
        }
     }
-    
-  }  
-  else {  
-    digitalWrite(LED, LOW);   //spegne il led  
+
+  }
+  else {
+    digitalWrite(LED, LOW);   //spegne il led
         if(state){
       state = false;
        if ( !getPage() ) {
         Serial.println("POST request failed");
        }
     }
-    
-  } 
+
+  }
 }
 
 
@@ -59,13 +59,13 @@ void loop() {
 
 // Attempt to connect to WiFi
 void connectWiFi() {
-  
+
   // Set WiFi mode to station (client)
   WiFi.mode(WIFI_STA);
-  
+
   // Initiate connection with SSID and PSK
   WiFi.begin(WIFI_SSID, WIFI_PSK);
-  
+
   // Blink LED while we wait for WiFi connection
   while ( WiFi.status() != WL_CONNECTED ) {
     delay(100);
@@ -78,10 +78,10 @@ void connectWiFi() {
 
 // Perform an HTTP POST request to a remote page
 bool getPage() {
-  
+
   // Attempt to make a connection to the remote server
   if ( !client.connect(http_site, http_port) )  return false;
-  
+
   if(state){
     // Make an HTTP POST request
     client.println("POST /updateState?secret_id=segreto&status=true HTTP/1.1");
@@ -96,6 +96,6 @@ bool getPage() {
     client.println("Connection: close");
     client.println();
   }
-  
+
   return true;
 }
