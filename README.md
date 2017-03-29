@@ -2,10 +2,10 @@
 A simple service to track when our parish library is opened.
 
 
-#What is
+## What is
 This repository contains my personal project to give a service to whoever wants to know if our parish library is open or not.
 
-#Architecture
+## Architecture
 * Server side: nodejs server that has two API REST call enabled:
   - GET /getState : Current state of the library
     - Return a JSON Object with the current state of the library and last time updated
@@ -21,7 +21,7 @@ This repository contains my personal project to give a service to whoever wants 
 
 * Button side: nodeMCU microcontroller coded with C (nodeMCU is an arduino like) with one button and a led representing the library's status. At the switch of the button the controller will do the PUT call described above.
 
-#Useful links
+## Useful links
 
 - [Here](http://www.andrealacava.com:3002/) you can find the service running.
 
